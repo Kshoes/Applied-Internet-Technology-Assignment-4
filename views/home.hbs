@@ -1,1 +1,17 @@
 <h2>My Snippets</h2>
+
+{{#each objs}}
+    <h4 class="display-flex">{{name}}</h4><p class="display-flex">Lines of code: {{lines}}</p>
+    <pre>{{code}}</pre>
+    <ol>Tags: 
+    {{#each tags}}
+        <li>{{this}}</li>
+    {{/each}}
+    </ol>
+{{/each}}
+
+
+
+{{!-- <form method="POST" action="/add">
+    <input type="submit">
+</form>  --}}
