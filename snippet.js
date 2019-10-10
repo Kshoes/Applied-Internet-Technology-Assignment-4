@@ -1,8 +1,5 @@
 // snippet.js
 
-const fs = require('fs');
-
-
 class Snippet {
     constructor(name, code, tags) {
         this.name = name;
