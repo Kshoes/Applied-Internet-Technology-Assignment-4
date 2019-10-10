@@ -1,11 +1,21 @@
+
+
+<h2>Snippet search:</h2>
+<form action="/" method="GET">
+    min lines: <input type="number" name="lineQ" value="">
+    tag: <input type="text" name="tagQ" value="">
+    text: <input type="text" name="textQ" value="">
+    <input type="submit" name="" value="search">
+</form>
+
 <h2>My Snippets</h2>
 
 {{#each objs}}
-    <h4 class="display-flex">{{name}}</h4><p class="display-flex">Lines of code: {{lines}}</p>
+    <h3 class="display-flex">{{name}}</h3><p class="display-flex">Lines of code: {{lines}}</p>
     <pre>{{code}}</pre>
     <ol>Tags: 
     {{#each tags}}
-        <li>{{this}}</li>
+        <li class="clickme"><a href="?tagQ={{this}}">{{this}}</a></li>
     {{/each}}
     </ol>
 {{/each}}

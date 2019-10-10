@@ -25,7 +25,23 @@ const logger = function(req, res, next) {   // custom middleware for debugging
 app.use(logger);
 
 app.get('/', (req, res) => {    // routing
-    res.render('home', {objs: snippets});
+    const lineQ = req.query.lineQ;
+    const tagQ = req.query.tagQ;
+    const textQ = req.query.textQ;
+
+    let copy = snippets.slice();
+
+    if(lineQ) {
+        copy = snippets.filter((Snippet) => Snippet.lines >= lineQ);
+    }
+    else if(tagQ) {
+        copy = snippets.filter((Snippet) => Snippet.tags.indexOf(tagQ) > -1);
+    }
+    else if(textQ) {
+        copy = snippets.filter((Snippet) => Snippet.code.indexOf(textQ) > -1);
+    }
+
+    res.render('home', {objs: copy});
 })
 
 app.get('/add', (req, res) => {
@@ -33,7 +49,7 @@ app.get('/add', (req, res) => {
 })
 
 
-const codeSamplePath = path.resolve(__dirname, 'code-samples');
+const codeSamplePath = path.resolve(__dirname, 'code-samples'); // reading snippet files
 const snippets = [];
 
 fs.readdir(codeSamplePath, 'utf-8', (err, files) => {
