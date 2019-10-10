@@ -56,3 +56,24 @@ li {
 a {
     text-decoration: none;
 }
+
+div {
+    content: '\A';
+    white-space: pre;
+    background-color: #EEEEEE;
+    padding: 8px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 50%;
+}
+
+div h2, div input, div textarea {
+    justify-content: center;
+    content: '\A';
+    white-space: pre;
+    padding: 8px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}

@@ -48,6 +48,14 @@ app.get('/add', (req, res) => {
     res.render('add');
 })
 
+app.post('/add', (req, res) => {    // handler for adding new snippets
+
+    const newSnippet = new snippet.Snippet(req.body.name, req.body.code, req.body.tags.trim().split(', '));
+    console.log(req.body);
+    snippets.unshift(newSnippet);
+    res.redirect('/');
+})
+
 
 const codeSamplePath = path.resolve(__dirname, 'code-samples'); // reading snippet files
 const snippets = [];

@@ -6,7 +6,12 @@ const fs = require('fs');
 class Snippet {
     constructor(name, code, tags) {
         this.name = name;
-        this.code = code.slice(code.indexOf('\n'));
+        if(code.indexOf('//') === -1) {
+            this.code = code;
+        }
+        else {
+            this.code = code.slice(code.indexOf('\n'));
+        }
         this.lines = this.countLines(code);
         this.tags = tags;
     }
@@ -22,7 +27,13 @@ class Snippet {
 
     countLines(code) {
         const codeLines = code.split('\n');
-        return codeLines.length - 2;
+        if(code.indexOf('//') === -1) {
+            return codeLines.length;
+        }
+        else {
+            return codeLines.length - 2;
+        }
+
     }
 }
 
